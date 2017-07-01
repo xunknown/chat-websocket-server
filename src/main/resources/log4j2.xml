@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn">
+	<appenders>
+		<console name="console" target="SYSTEM_OUT">
+			<Filters>
+				<ThresholdFilter level="all" />
+			</Filters>
+			<!-- <PatternLayout pattern="[%r]%d{yyyy-MM-dd HH:mm:ss.SSS} %l %p: %m%n"/> -->
+			<PatternLayout pattern="[%r]%d{yyyy-MM-dd HH:mm:ss.SSS} %c{1.}.%M(%F:%L) %p: %m%n" />
+		</console>
+		<RollingFile name="file" fileName="logs/log.log"
+			filePattern="logs/log-%d{yyyy-MM-dd}-%i.log">
+			<Filters>
+				<ThresholdFilter level="info" />
+			</Filters>
+			<!-- <PatternLayout pattern="[%r]%d{yyyy-MM-dd HH:mm:ss.SSS} %l %p: %m%n"/> -->
+			<PatternLayout pattern="[%r]%d{yyyy-MM-dd HH:mm:ss.SSS} %c{1.}.%M(%F:%L) %p: %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<root level="all">
+			<appender-ref ref="console" />
+			<appender-ref ref="file" />
+		</root>
+	</loggers>
+</configuration>
